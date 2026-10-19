@@ -1,0 +1,13 @@
+model,condition,selected,total,source_type
+ChatGPT,Control,28,30,published_aggregate
+Claude,Control,25,30,published_aggregate
+Gemini,Control,11,30,published_aggregate
+ChatGPT,Neutral Copy,29,30,published_aggregate
+Claude,Neutral Copy,25,30,published_aggregate
+Gemini,Neutral Copy,11,30,published_aggregate
+ChatGPT,Request Language Only,30,30,published_aggregate
+Claude,Request Language Only,27,30,published_aggregate
+Gemini,Request Language Only,12,30,published_aggregate
+ChatGPT,Product-to-Use Relationship,30,30,published_aggregate
+Claude,Product-to-Use Relationship,30,30,published_aggregate
+Gemini,Product-to-Use Relationship,30,30,published_aggregate
