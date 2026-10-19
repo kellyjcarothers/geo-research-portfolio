@@ -4,7 +4,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from analysis import (CONDITIONS, aggregate_trials, exact_mcnemar,
                       executive_markdown, paired_from_all_success_aggregate,
                       paired_from_trials, read_published, rollup, validate_trials,

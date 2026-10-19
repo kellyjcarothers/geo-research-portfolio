@@ -10,12 +10,12 @@ st.set_page_config(page_title=f"{PORTFOLIO_NAME} | Research portfolio", page_ico
 
 navigation = st.navigation(
     [
-        st.Page("views/home.py", title="Home", icon=":material/home:", default=True),
-        st.Page("views/wine_explorer.py", title="Wine experiment", icon=":material/science:", url_path="wine-experiment"),
-        st.Page("views/lip_treatments.py", title="Lip treatment study", icon=":material/biotech:", url_path="lip-treatments"),
-        st.Page("views/visibility_framework.py", title="Measurement QA", icon=":material/analytics:", url_path="measurement-qa"),
-        st.Page("views/methods.py", title="Methodology", icon=":material/article:", url_path="methodology"),
-        st.Page("views/about.py", title="About", icon=":material/person:", url_path="about"),
+        st.Page("home.py", title="Home", icon=":material/home:", default=True),
+        st.Page("wine_explorer.py", title="Wine experiment", icon=":material/science:", url_path="wine-experiment"),
+        st.Page("lip_treatments.py", title="Lip treatment study", icon=":material/biotech:", url_path="lip-treatments"),
+        st.Page("visibility_framework.py", title="Measurement QA", icon=":material/analytics:", url_path="measurement-qa"),
+        st.Page("methods.py", title="Methodology", icon=":material/article:", url_path="methodology"),
+        st.Page("about.py", title="About", icon=":material/person:", url_path="about"),
     ],
     position="top",
 )

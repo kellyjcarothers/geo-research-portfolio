@@ -27,7 +27,7 @@ def test_invalid_visibility_counts():
 
 
 def test_public_page_read_only():
-    public_view = Path(__file__).parent.parent / "views" / "wine_explorer.py"
+    public_view = Path(__file__).parent / "wine_explorer.py"
     content = public_view.read_text()
     assert "st.file_uploader(" not in content
     assert "using_published = True" in content

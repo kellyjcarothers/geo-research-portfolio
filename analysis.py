@@ -33,7 +33,7 @@ INTERVENTIONS = {
 
 def read_published(path: str | Path | None = None) -> pd.DataFrame:
     if path is None:
-        path = Path(__file__).parent / "data" / "published_summary.csv"
+        path = Path(__file__).parent / "published_summary.csv"
     data = pd.read_csv(path)
     required = {"model", "condition", "selected", "total"}
     if not required.issubset(data.columns):

@@ -19,13 +19,13 @@ st.markdown('<div class="section-line">FEATURED RESEARCH</div>', unsafe_allow_ht
 left, mid, right = st.columns(3, gap="medium")
 with left:
     research_card("01 · WINE EXPERIMENT", "The missing occasion", "Why did adding a product-to-use relationship outperform keyword overlap in a controlled eight-wine recommendation test?", "71.1% control → 100% explicit relationship")
-    st.page_link("views/wine_explorer.py", label="Explore the experiment", icon=":material/arrow_forward:", use_container_width=True)
+    st.page_link("wine_explorer.py", label="Explore the experiment", icon=":material/arrow_forward:", use_container_width=True)
 with mid:
     research_card("02 · BEAUTY REPLICATION", "From keywords to suitability", "How did the same concept perform in peptide lip treatments, and what happened when competitors made the same claim?", "87/90 selections for Target A with explicit suitability")
-    st.page_link("views/lip_treatments.py", label="Explore the replication", icon=":material/arrow_forward:", use_container_width=True)
+    st.page_link("lip_treatments.py", label="Explore the replication", icon=":material/arrow_forward:", use_container_width=True)
 with right:
     research_card("03 · METRIC RELIABILITY", "Beyond a visibility score", "Separate appearance rate, first-position rate, citation rate, and meaningful unbranded recommendation share.", "Every KPI needs an auditable numerator and denominator")
-    st.page_link("views/visibility_framework.py", label="Explore measurement QA", icon=":material/arrow_forward:", use_container_width=True)
+    st.page_link("visibility_framework.py", label="Explore measurement QA", icon=":material/arrow_forward:", use_container_width=True)
 
 st.markdown('<div class="section-line">HOW THE RESEARCH BECOMES STRATEGY</div>', unsafe_allow_html=True)
 a, b, c = st.columns(3, gap="large")
@@ -42,7 +42,7 @@ with c:
 st.divider()
 st.subheader("Research integrity is part of the work")
 st.write("The public explorer contains traceable summary results from published research, not reconstructed individual answers. Experiments supplied product evidence directly to models, so the results establish behavior under controlled conditions—not live-search impact.")
-st.page_link("views/methods.py", label="Read the methods and limitations", icon=":material/menu_book:")
+st.page_link("methods.py", label="Read the methods and limitations", icon=":material/menu_book:")
 st.markdown(f"Original wine study: [5WPR, September 2026]({WINE_SOURCE}).")
 if CONTACT_URL:
     st.link_button("Discuss research or collaboration", CONTACT_URL, type="primary")
