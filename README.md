@@ -1,11 +1,11 @@
 # GEO Research & Strategy — public Streamlit portfolio
 
-**A six-page, read-only portfolio built around published 5WPR GEO experiments.** Designed for hiring conversations with AI-search platforms, research teams, and enterprise customer strategy leaders.
+**A six-page, read-only portfolio built around published GEO experiments.** Designed for hiring conversations with AI-search platforms, research teams, and enterprise customer strategy leaders.
 
 ## What is included
 
 1. **Home** — three featured studies, compact stats, and a research-to-strategy narrative.
-2. **Wine experiment** — full interactive Summer in a Bottle summary across four evidence conditions and three models; model filters, exact selected comparisons, Wilson descriptive intervals, exported executive research brief and aggregate CSV.
+2. **Wine experiment** — full interactive Summer in a Bottle summary across four evidence conditions and three models; model filters, exact selected comparisons, Wilson descriptive intervals, exported executive research brief, and aggregate CSV.
 3. **Lip treatment study** — cross-category replication using only the published Target A counts, plus two-competitor comparison. Model-level keyword-versus-relationship comparisons.
 4. **Measurement QA** — interactive appearance versus first-position KPI explainer with arithmetic validation and a client-friendly metric dictionary.
 5. **Methodology** — provenance, experimental design, data limitations, and credited source links.
@@ -54,7 +54,7 @@ Sources:
 - Lip treatment: https://www.5wpr.com/new/what-information-makes-chatgpt-claude-and-gemini-recommend-peptide-treatments/
 - Measurement: https://www.5wpr.com/new/geo-measurement-pr/
 
-**Data caution:** A sentence in the wine article says 90 trials per condition *per model*, but the response total and model-specific table indicate 30 per model per condition. The portfolio uses the reconciled 360-response blinded design. A separate measurement article prints 97.81% for 69 out of 71; the correct value is 97.18%. Both issues are documented in the app rather than silently repeated.
+**Data caution:** A sentence in the wine article says 90 trials per condition *per model*, but the response total and model-specific table indicate 30 per model per condition. The portfolio uses the reconciled 360-response blinded design. A separate measurement article prints 97.81% for 69 out of 71; the correct value is 97.18%. The app documents both issues rather than silently repeating them.
 
 ## 4. Publish on Streamlit Community Cloud
 
@@ -108,4 +108,4 @@ data/published_summary.csv  Credited wine aggregates
 
 Statistical tests of paired binary outcomes require matching identifiers. When one published wine condition selected the target in every matched trial, discordant counts can be inferred from the aggregated margins if the matched-trial design is valid. That inference is explicitly marked. Other conditions require original matched trial logs for valid exact tests.
 
-The portfolio **does not run a live GEO visibility monitor**. No claim from the offline experiments should be marketed as proof of increased retrieval, Google ranking, citations, or sales after publication.
+The portfolio **does not run a live GEO visibility monitor**. Do not market any claim from the offline experiments as proof of increased retrieval, Google ranking, citations, or sales after publication.
