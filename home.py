@@ -5,15 +5,15 @@ from site_style import research_card, stat
 st.markdown(f'''<div class="hero">
 <div class="eyebrow">{PORTFOLIO_NAME.upper()} · EXPERIMENTS / EVIDENCE / ADVISORY</div>
 <div class="hero-title">What makes AI recommend one brand over another?</div>
-<div class="hero-sub">{TAGLINE}. Explore controlled product-selection studies, the limits of AI visibility metrics, and research translated into practical GEO recommendations.</div>
-<div><span class="tag">Controlled trials</span><span class="tag">Cross-model analysis</span><span class="tag">Brand selection</span><span class="tag">Measurement QA</span></div></div>''', unsafe_allow_html=True)
+<div class="hero-sub">{TAGLINE}. Explore controlled product-selection studies, how content format affects AI citation, and research translated into practical GEO recommendations.</div>
+<div><span class="tag">Controlled trials</span><span class="tag">Cross-model analysis</span><span class="tag">Brand selection</span><span class="tag">Citation testing</span></div></div>''', unsafe_allow_html=True)
 
 c1, c2, c3, c4 = st.columns(4, gap="small")
 with c1: stat("Wine study · blinded responses", "360")
 with c2: stat("Wine · target selections with explicit context", "90/90")
 with c3: stat("Lip study · explicit relationship", "87/90")
 with c4: stat("Research areas", "03")
-st.caption("Study metrics measure selection under supplied, controlled evidence. They are not live market visibility or causal SEO lift.")
+st.caption("All three studies supply documents directly to the models. Their results describe model behavior under controlled conditions, not live market visibility or causal SEO lift.")
 
 st.markdown('<div class="section-line">FEATURED RESEARCH</div>', unsafe_allow_html=True)
 left, mid, right = st.columns(3, gap="medium")
@@ -24,8 +24,8 @@ with mid:
     research_card("02 · BEAUTY REPLICATION", "From keywords to suitability", "How did the same concept perform in peptide lip treatments, and what happened when competitors made the same claim?", "87/90 selections for Target A with explicit suitability")
     st.page_link("lip_treatments.py", label="Explore the replication", icon=":material/arrow_forward:", use_container_width=True)
 with right:
-    research_card("03 · METRIC RELIABILITY", "Beyond a visibility score", "Separate appearance rate, first-position rate, citation rate, and meaningful unbranded recommendation share.", "Every KPI needs an auditable numerator and denominator")
-    st.page_link("visibility_framework.py", label="Explore measurement QA", icon=":material/arrow_forward:", use_container_width=True)
+    research_card("03 · FORMAT AND CITATION", "Do tables earn more AI citations?", "40 brand facts written as tables, bullets and prose, tested across Claude, ChatGPT and Perplexity in 2,400 pre-registered calls.", "Format didn't change accuracy; document position outweighed it")
+    st.page_link("format_study.py", label="Explore the format study", icon=":material/arrow_forward:", use_container_width=True)
 
 st.markdown('<div class="section-line">HOW THE RESEARCH BECOMES STRATEGY</div>', unsafe_allow_html=True)
 a, b, c = st.columns(3, gap="large")

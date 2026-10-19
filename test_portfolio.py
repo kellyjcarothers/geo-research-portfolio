@@ -1,6 +1,6 @@
 from pathlib import Path
 from lip_data import TARGET_A, MODEL_COUNTS, COMPETITION, validate_published_lip_counts
-from visibility_data import ratios
+import format_data as fd
 
 
 def test_published_lip_data():
@@ -10,20 +10,48 @@ def test_published_lip_data():
     assert int(COMPETITION.selected.sum()) == 90
 
 
-def test_visibility_arithmetic():
-    rates = ratios(69,25,71)
-    assert round(100*rates["appearance_rate"],2) == 97.18
-    assert round(100*rates["first_position_rate"],2) == 35.21
-    assert round(rates["difference_pp"],2) == 61.97
+def _rate(pair):
+    n, k = pair
+    return round(100 * k / n, 1)
 
 
-def test_invalid_visibility_counts():
-    try:
-        ratios(5,7,10)
-    except ValueError:
-        pass
-    else:
-        raise AssertionError("invalid numerator relationship was accepted")
+def test_format_design_totals():
+    assert fd.DESIGN["cells"] == 2400
+    assert sum(n for n, _ in fd.CITATION_COUNTS.values()) == 2400
+    assert sum(n for n, _, _ in fd.SONAR_SLOT.values()) == 800
+    assert sum(fd.DESIGN["categories"].values()) == fd.DESIGN["facts"] == 40
+
+
+def test_format_published_figures_reproduce():
+    # Figures printed in the August 12, 2026 article.
+    assert _rate(fd.CITATION_COUNTS["Perplexity|table"]) == 66.0
+    assert _rate(fd.CITATION_COUNTS["Perplexity|diffuse_prose"]) == 55.0
+    assert _rate(fd.SONAR_SLOT[1][:2]) == 71.9
+    assert _rate(fd.SONAR_SLOT[3][:2]) == 39.4
+    published = sorted(_rate(v) for v in fd.CORRECT_VALUE_PUBLISHED.values())
+    assert (published[0], published[-1]) == (93.5, 94.6)
+
+
+def test_format_corrected_scores_only_raise_rates():
+    for f, (n, k) in fd.CORRECT_VALUE_CORRECTED.items():
+        n0, k0 = fd.CORRECT_VALUE_PUBLISHED[f]
+        assert n == n0 and k >= k0
+
+
+def test_format_paired_counts_consistent():
+    for r in fd.SONAR_PAIRED_NAMED:
+        a = fd.CITATION_COUNTS[f"Perplexity|{r['a']}"][1]
+        b = fd.CITATION_COUNTS[f"Perplexity|{r['b']}"][1]
+        assert r["a_only"] - r["b_only"] == a - b
+        assert 0 <= r["p"] <= 1
+
+
+def test_format_data_has_no_response_text():
+    names = {k for k in vars(fd) if k.isupper()}
+    assert names == {"DESIGN", "CITATION_COUNTS", "CORRECT_VALUE_PUBLISHED", "CORRECT_VALUE_CORRECTED", "SONAR_SLOT",
+                     "SONAR_PAIRED_NAMED", "SONAR_NAMED_OR_BRACKET_BY_FORMAT", "HARDER_COUNTS", "CONTRADICTION",
+                     "EXAMPLE_PASSAGES"}
+    assert "response_text" not in Path(fd.__file__).read_text()
 
 
 def test_public_page_read_only():

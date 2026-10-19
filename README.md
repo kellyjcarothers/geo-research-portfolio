@@ -7,7 +7,7 @@
 1. **Home** — three featured studies, compact stats, and a research-to-strategy narrative.
 2. **Wine experiment** — full interactive Summer in a Bottle summary across four evidence conditions and three models; model filters, exact selected comparisons, Wilson descriptive intervals, exported executive research brief, and aggregate CSV.
 3. **Lip treatment study** — cross-category replication using only the published Target A counts, plus two-competitor comparison. Model-level keyword-versus-relationship comparisons.
-4. **Measurement QA** — interactive appearance versus first-position KPI explainer with arithmetic validation and a client-friendly metric dictionary.
+4. **Format study** — pre-registered test of whether tables, bullets or prose change AI accuracy and source attribution across Claude, ChatGPT and Perplexity, with follow-up conflicting-source arms and audit notes.
 5. **Methodology** — provenance, experimental design, data limitations, and credited source links.
 6. **About** — professional positioning and an optional working contact link.
 
@@ -26,7 +26,7 @@ streamlit run portfolio_app.py
 
 On Windows, activate with `.venv\Scripts\activate`. The local app is generally available at `http://localhost:8501`.
 
-**Entrypoint:** `portfolio_app.py` — not `analysis.py`, `views/home.py`, or the older `app.py` from the separate research explorer project.
+**Entrypoint:** `portfolio_app.py` — not `analysis.py`, `home.py`, or the older `app.py` from the separate research explorer project.
 
 ## 2. Personalize before publishing
 
@@ -52,14 +52,14 @@ python -m pytest tests -q
 Sources:
 - Wine: https://www.5wpr.com/new/how-wineries-can-increase-ai-wine-recommendations-a-controlled-study-of-product-to-use-content/
 - Lip treatment: https://www.5wpr.com/new/what-information-makes-chatgpt-claude-and-gemini-recommend-peptide-treatments/
-- Measurement: https://www.5wpr.com/new/geo-measurement-pr/
+- Format study: https://www.5wpr.com/new/do-tables-and-bullets-increase-ai-citations-new-findings-from-2-400-tests/
 
-**Data caution:** A sentence in the wine article says 90 trials per condition *per model*, but the response total and model-specific table indicate 30 per model per condition. The portfolio uses the reconciled 360-response blinded design. A separate measurement article prints 97.81% for 69 out of 71; the correct value is 97.18%. The app documents both issues rather than silently repeating them.
+**Data caution:** A sentence in the wine article says 90 trials per condition *per model*, but the response total and model-specific table indicate 30 per model per condition. The portfolio uses the reconciled 360-response blinded design. In the format study, three facts were scored against superseded values, which understated correct-value rates (98.9–100% corrected vs. 93.5–94.6% published). The app documents both issues rather than silently repeating them.
 
 ## 4. Publish on Streamlit Community Cloud
 
 1. Create a **new GitHub repository** for these public files. Before pushing, examine the files and confirm no employer-owned confidential material or raw user data is included. Keep the repository public if you want visitors to inspect the methods and code.
-2. In GitHub, upload the unzipped **contents** of this folder to the repo root. Include `portfolio_app.py`, `views/`, `data/`, `.streamlit/config.toml`, `analysis.py`, `lip_data.py`, `visibility_data.py`, and `requirements.txt`. Avoid committing `.venv`, secrets, raw client exports, or private trial logs.
+2. In GitHub, upload the unzipped **contents** of this folder to the repo root. Keep all files at the repo root (flat layout) plus `.streamlit/config.toml`. Avoid committing `.venv`, secrets, raw client exports, or private trial logs.
 3. Go to https://share.streamlit.io and choose **Create app** (or **New app**, depending on the UI). Select the repository and branch.
 4. Enter **`portfolio_app.py`** as the main-file path. Choose an available subdomain such as `geo-research-portfolio.streamlit.app` (example only; availability not established).
 5. In **Advanced settings**, choose Python 3.12 if available. This app requires **no secrets**.
@@ -88,20 +88,20 @@ Official Streamlit documentation:
 
 ```text
 portfolio_app.py           Public application router / top navigation
-views/home.py              Landing page
-views/wine_explorer.py     Public, read-only adapted wine explorer
-views/lip_treatments.py    Published cross-category research
-views/visibility_framework.py  Visibility QA calculator
-views/methods.py           Source, methodology, and limitations
-views/about.py             Researcher positioning
+home.py                    Landing page
+wine_explorer.py           Public, read-only adapted wine explorer
+lip_treatments.py          Published cross-category research
+format_study.py            Format and citation study
+methods.py                 Source, methodology, and limitations
+about.py                   Researcher positioning
 analysis.py                Wine study statistics and validation
 lip_data.py                Lip study summary counts
-visibility_data.py         KPI arithmetic
+format_data.py             Format study aggregate counts (generated from the study databases)
 portfolio_config.py        Site name, tagline and optional contact
 site_style.py              Shared responsive theme
 requirements.txt           Cloud Python dependencies
-data/published_summary.csv  Credited wine aggregates
-.github/workflows/tests.yml CI tests on GitHub
+published_summary.csv      Credited wine aggregates
+test_*.py                  Test suite
 ```
 
 ## Technical boundaries

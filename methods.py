@@ -1,5 +1,5 @@
 import streamlit as st
-from portfolio_config import WINE_SOURCE, LIP_SOURCE, VISIBILITY_SOURCE
+from portfolio_config import WINE_SOURCE, LIP_SOURCE, FORMAT_SOURCE
 
 st.markdown('<div class="eyebrow">METHODS / PROVENANCE / LIMITATIONS</div>', unsafe_allow_html=True)
 st.title("What the portfolio measures—and what it does not")
@@ -11,7 +11,7 @@ with a:
     st.write("Fixed evidence cards, a consumer request, candidate products, a model version, and a content condition.")
 with b:
     st.subheader("Observed outcome")
-    st.write("Whether a target product was included in the model's recommendation set during controlled trials.")
+    st.write("Whether a target product was selected (wine, lip) or whether an answer stated a fact and named its source document (format study).")
 with c:
     st.subheader("Not observed")
     st.write("Live crawling, indexing, web retrieval, AI citation lift, or downstream customer purchases.")
@@ -27,6 +27,16 @@ st.markdown("""
 """)
 st.warning("Editorial source inconsistency: one sentence calls the design '90 trials per condition per model,' contradicting the 360-response blinded total and 30-trial model cells. The portfolio follows the reconciled 30 per model and condition.")
 
+st.subheader("Format and citation study: documented structure")
+st.markdown("""
+- **Question:** a direct question about one of 40 sourced brand facts, answered from five supplied documents.
+- **Conditions:** the target document written as a table, bullets, prose, or diffuse prose (key fact moved out of the first sentence).
+- **Models:** Claude Sonnet 5, GPT-5.5 (2026-04-23) and Perplexity Sonar; 2,400 calls in the pre-registered main arm.
+- **Controls:** distractor documents fixed across formats; target position rotated through all five slots; deterministic string scoring.
+- **Outcomes:** whether the answer stated the correct value, and whether it named the target document's outlet.
+""")
+st.warning("Re-check of the format study data: three facts were scored against superseded values, which understated correct-value rates (corrected 98.9–100% vs. 93.5–94.6% published). Perplexity's web search was also left on. Both are documented on the Format study page.")
+
 st.subheader("Published summaries versus actual trial records")
 st.markdown("""
 The app includes published aggregate counts, not individual observations reconstructed from rates. Aggregate totals support model-by-condition comparisons and binomial Wilson intervals. For the wine study, exact paired flips are arithmetically identifiable when one arm selected the target in every matched trial and the pairing assumption is supported by the study. For other comparisons, original trial IDs are required.
@@ -38,13 +48,13 @@ st.subheader("Design limitations")
 st.markdown("""
 The experiments isolate effects of information **supplied to the models**; they do not show whether search engines would retrieve the revised content or whether publishing a sentence to a website changes live recommendations. The findings apply to the tested candidate sets and model versions. Results may shift with different prompts, products, models, and available evidence.
 
-The visibility QA demonstration uses counts from a published article. It does **not** imply access to its private answer-level logs. Input sliders produce mathematical scenarios, not additional observed research.
+The format study page shows aggregate counts computed from the study's own databases. It includes no response text or prompts.
 """)
 
 st.subheader("Research sources and credit")
 st.markdown(f"""
 - [Wine experiment — 5WPR, September 8, 2026]({WINE_SOURCE})
 - [Peptide lip treatment experiment — 5WPR, September 10, 2026]({LIP_SOURCE})
-- [GEO measurement article — 5WPR, October 16, 2026]({VISIBILITY_SOURCE})
+- [Format and citation study — 5WPR, August 12, 2026]({FORMAT_SOURCE})
 """)
 st.caption("Research credit remains with the original publisher and listed authors. This portfolio is a presentation and analytical companion to the published work, not a claim that the employer's proprietary dataset is publicly available.")

@@ -5,4 +5,4 @@ CONTACT_URL = ""  # e.g. a LinkedIn profile or professional website. Leave empty
 
 WINE_SOURCE = "https://www.5wpr.com/new/how-wineries-can-increase-ai-wine-recommendations-a-controlled-study-of-product-to-use-content/"
 LIP_SOURCE = "https://www.5wpr.com/new/what-information-makes-chatgpt-claude-and-gemini-recommend-peptide-treatments/"
-VISIBILITY_SOURCE = "https://www.5wpr.com/new/geo-measurement-pr/"
+FORMAT_SOURCE = "https://www.5wpr.com/new/do-tables-and-bullets-increase-ai-citations-new-findings-from-2-400-tests/"
